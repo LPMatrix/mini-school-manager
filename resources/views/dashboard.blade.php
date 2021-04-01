@@ -29,7 +29,11 @@
                              <td>
                                   <div class="e-d-cont">
                                        <button class="edit">E</button>
-                                       <button class="delete">D</button>
+                                       <form action="{{route('delete_student', $student->id)}}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                       <button class="delete" type="submit">D</button>
+                                     </form>
                                   </div>
                              </td>
                         </tr>

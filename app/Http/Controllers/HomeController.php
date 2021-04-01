@@ -30,4 +30,24 @@ class HomeController extends Controller
     	Student::create($request->all());
     	return redirect()->back()->with(['message' => 'Student added successfully', 'type' => 'success']);
     }
+
+    public function deleteUser(Request $request, Student $student){
+        $student->delete();
+        return redirect()->back()->with(['message' => 'Student deleted successfully', 'type' => 'success']);
+    }
+
+    public function updateUser(StoreUserRequest $request, Student $student)
+    {
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+        $user->username = $request->username;
+        $user->state = 1;
+
+        $user->update();
+
+        return redirect()->back()->with(['message'=>'Student updated successfully', 'type' => 'success']);
+    }
 }

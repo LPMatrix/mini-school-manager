@@ -26,3 +26,4 @@ require __DIR__.'/auth.php';
 Route::get('/attendance', [HomeController::class, 'attendance'])->name('attendance');
 Route::get('/student/create', [HomeController::class, 'create'])->name('create_student_view');
 Route::post('/student/store', [HomeController::class, 'store'])->name('store_student');
+Route::delete('/student/delete/{student}', [HomeController::class, 'deleteUser'])->name('delete_student');
