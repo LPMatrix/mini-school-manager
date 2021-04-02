@@ -14,13 +14,6 @@ link.addEventListener("click", function(){
      link.classList.add("link-color");
 })
 
-
-edit.forEach(function(e){
-     e.addEventListener("click", function(){
-          editPopup.style.display = "block";
-     })
-});
-
 close.addEventListener("click", function(){
      editPopup.style.display = "none";
 })

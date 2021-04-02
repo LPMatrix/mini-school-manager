@@ -27,3 +27,5 @@ Route::get('/attendance', [HomeController::class, 'attendance'])->name('attendan
 Route::get('/student/create', [HomeController::class, 'create'])->name('create_student_view');
 Route::post('/student/store', [HomeController::class, 'store'])->name('store_student');
 Route::delete('/student/delete/{student}', [HomeController::class, 'deleteUser'])->name('delete_student');
+Route::get('/student/edit/{student}', [HomeController::class, 'editUser'])->name('edit_student');
+Route::put('/student/update/{student}', [HomeController::class, 'updateUser'])->name('update_student');

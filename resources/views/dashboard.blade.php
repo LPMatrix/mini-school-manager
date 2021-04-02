@@ -28,7 +28,7 @@
                              <td>{{$student->telephone}}</td>
                              <td>
                                   <div class="e-d-cont">
-                                       <button class="edit">E</button>
+                                       <a class="edit" href="{{route('edit_student', $student->id)}}">E</a>
                                        <form action="{{route('delete_student', $student->id)}}" method="POST">
                                         @csrf
                                         @method('delete')
@@ -42,22 +42,4 @@
               </div>
         </div>
    </main>
-
-    <!-- POPUP -->
-    <section id="edit-section">
-         <div class="edit-popup">
-              <div class="close-icon">
-               <div class="close">&times;</div>
-              </div>
-          <div class="edit-cont">
-               <input type="text" class="edit-input" placeholder="Name">
-               <input type="text" class="edit-input" placeholder="Class">
-               <input type="number" class="edit-input" placeholder="Age">
-               <input type="date" class="edit-input">
-               <input type="text" class="edit-input" placeholder="Address">
-               <input type="tel" class="edit-input" placeholder="Guardian num">
-               <button class="update">update</button>
-          </div>
-         </div>
-    </section>
 @endsection

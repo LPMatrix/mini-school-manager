@@ -14,12 +14,12 @@ class HomeController extends Controller
 
     public function dashboard(){
     	$students = Student::all();
-    	// dd($students);
     	return view('dashboard', compact('students'));
     }
 
     public function attendance(){
-    	return view('attendance');
+    	$students = Student::all();
+    	return view('attendance', compact('students'));
     }
 
     public function create(){
@@ -31,22 +31,26 @@ class HomeController extends Controller
     	return redirect()->back()->with(['message' => 'Student added successfully', 'type' => 'success']);
     }
 
+    public function editUser(Student $student){
+    	return view('edit', compact('student'));
+    }
+
     public function deleteUser(Request $request, Student $student){
         $student->delete();
         return redirect()->back()->with(['message' => 'Student deleted successfully', 'type' => 'success']);
     }
 
-    public function updateUser(StoreUserRequest $request, Student $student)
+    public function updateUser(Request $request, Student $student)
     {
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role = $request->role;
-        $user->username = $request->username;
-        $user->state = 1;
+        $student->name = $request->name;
+        $student->class = $request->class;
+        $student->age = $request->age;
+        $student->address = $request->address;
+        $student->telephone = $request->telephone;
+        $student->dob = $request->dob;
 
-        $user->update();
+        $student->update();
 
         return redirect()->back()->with(['message'=>'Student updated successfully', 'type' => 'success']);
     }
