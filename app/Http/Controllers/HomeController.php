@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Attendance;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -53,5 +55,26 @@ class HomeController extends Controller
         $student->update();
 
         return redirect()->back()->with(['message'=>'Student updated successfully', 'type' => 'success']);
+    }
+
+    public function markAttendance(Request $request){
+    	foreach ($request->student as $key => $value) {
+    		Attendance::create([
+    			'student_id' => $value,
+    			'present' => 1
+    		]);
+    	}
+    	return redirect()->back()->with(['message'=>'Attendance marked successfully', 'type' => 'success']);
+    }
+
+    public function viewAttendance(){
+    	$attendance = Student::with('attendance')->get();
+    	return view('view_attendance', compact('attendance'));
+    }
+
+    public function filterAttendance(Request $request){
+    	$attendance = Student::whereDate('created_at', $request->date)->with('attendance')->get();
+    	dd($attendance);
+    	return redirect()->route('view_attendance', compact('attendance'));
     }
 }

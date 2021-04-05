@@ -20,6 +20,7 @@
               <ul class="aside-item">
                    <li><a href="{{ route('dashboard') }}" class="link">Students</a></li>
                    <li><a href="{{ route('attendance') }}" class="link">Attendance</a></li>
+                   <li><a href="{{ route('view_attendance') }}" class="link">View Attendance</a></li>
               </ul>
               <a href="#" onclick="event.preventDefault(); document.getElementById('form-logout').submit();" class="log-out">Logout</a>
               <form id="form-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
